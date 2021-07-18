@@ -9,7 +9,15 @@ import java.util.Map;
 
 import jxl.Sheet;
 import jxl.Workbook;
+import jxl.format.Colour;
 import jxl.read.biff.BiffException;
+import jxl.write.Label;
+import jxl.write.WritableCellFormat;
+import jxl.write.WritableFont;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
+import jxl.write.Number;
 
 public class JExcelHelper {
 	
@@ -33,5 +41,46 @@ public class JExcelHelper {
 		return data;
 		
 	}
-
+	
+	
+	public void writeJExcel() throws IOException, WriteException {
+		
+		File currentDir = new File(".");
+		String path = currentDir.getAbsolutePath();
+		String fileLocation = path.substring(0, path.length() - 1) + "temp.xls";
+		
+		WritableWorkbook workbook = Workbook.createWorkbook(new File(fileLocation));
+		
+		WritableSheet sheet = workbook.createSheet("Sheet 1", 0);
+		
+		WritableCellFormat headerFormat = new WritableCellFormat();
+		WritableFont font = new WritableFont(WritableFont.ARIAL, 16, WritableFont.BOLD);
+		headerFormat.setFont(font);
+		headerFormat.setBackground(Colour.LIGHT_BLUE);
+		headerFormat.setWrap(true);
+		
+		Label headerLabel = new Label(0, 0, "Name", headerFormat);
+		sheet.setColumnView(0, 60);
+		sheet.addCell(headerLabel);
+		
+		headerLabel  = new Label(1, 0, "Age", headerFormat);
+		sheet.setColumnView(0, 40);
+		sheet.addCell(headerLabel);
+		
+		
+		WritableCellFormat cellFormat = new WritableCellFormat();
+		cellFormat.setWrap(true);
+		
+		Label cellLabel = new Label(0, 1, "John Smith", cellFormat);
+		sheet.addCell(cellLabel);
+		
+		Number cellNumber = new Number(1, 1, 20, cellFormat);
+		sheet.addCell(cellNumber);
+		
+		
+		workbook.write();
+		workbook.close();
+		
+	}
+	
 }

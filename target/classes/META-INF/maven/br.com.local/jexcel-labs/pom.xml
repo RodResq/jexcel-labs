@@ -23,11 +23,40 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- Testes unitarios -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.hamcrest</groupId>
+					<artifactId>hamcrest-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+			<version>${hamcrest.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		 <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>2.28.2</version>
+            <scope>test</scope>
+        </dependency>
+        
     </dependencies>
-
+    
     <properties>
         <poi.version>4.1.1</poi.version>
         <jexcel.version>1.0.6</jexcel.version>
+        <junit.version>4.12</junit.version>
+		<hamcrest.version>2.1</hamcrest.version>
     </properties>
     
 </project>
