@@ -9,6 +9,8 @@ import jxl.WorkbookSettings;
 import jxl.write.DateFormats;
 import jxl.write.DateTime;
 import jxl.write.Label;
+import jxl.write.Number;
+import jxl.write.NumberFormats;
 import jxl.write.WritableCellFormat;
 import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
@@ -54,6 +56,14 @@ public class CreateExcelFile {
 		s.addCell(dt);
 		
 		/* Cria um label e escreve um float numver em uma célula da folha*/
+		Label l1 = new Label(2, 0, "FLoaat", cf);
+		s.addCell(l1);
+		WritableCellFormat cf2 = new WritableCellFormat(NumberFormats.FLOAT);
+		Number n = new Number(2, 1, 3.1415926535, cf2);
+		s.addCell(n);
+		
+		Number n2 = new Number(2, 2, -3.1415926535, cf2);
+		s.addCell(n2);
 		
 		
 	}
