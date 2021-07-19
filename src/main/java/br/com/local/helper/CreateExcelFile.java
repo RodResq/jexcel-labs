@@ -10,6 +10,7 @@ import jxl.write.DateFormats;
 import jxl.write.DateTime;
 import jxl.write.Label;
 import jxl.write.Number;
+import jxl.write.NumberFormat;
 import jxl.write.NumberFormats;
 import jxl.write.WritableCellFormat;
 import jxl.write.WritableFont;
@@ -64,6 +65,19 @@ public class CreateExcelFile {
 		
 		Number n2 = new Number(2, 2, -3.1415926535, cf2);
 		s.addCell(n2);
+		
+		
+		/* Cria um label e escreve um float number acima de 3 decimais 
+	       em uma célula da folha*/
+		
+		Label l3 = new Label(3, 0, "3dps", cf);
+		s.addCell(l3);
+		
+		NumberFormat dp3 = new NumberFormat("#.###");
+		WritableCellFormat dp3cell = new WritableCellFormat(dp3);
+		
+		Number n3 = new Number(3, 1, 3.1415926535, dp3cell);
+		s.addCell(n3);
 		
 		
 	}
