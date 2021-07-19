@@ -8,6 +8,7 @@ import jxl.Workbook;
 import jxl.WorkbookSettings;
 import jxl.write.DateFormats;
 import jxl.write.DateTime;
+import jxl.write.Formula;
 import jxl.write.Label;
 import jxl.write.Number;
 import jxl.write.NumberFormat;
@@ -80,6 +81,32 @@ public class CreateExcelFile {
 		s.addCell(n3);
 		
 		
+		/* Cria um label e adiciona 2 células na folha*/
+		
+		
+		Label l4 = new Label(4, 0, "Add 2 cells", cf);
+		s.addCell(l4);
+		
+		Number n4 = new Number(4, 1, 10);
+		s.addCell(n4);
+		
+		Number n5 = new Number(4, 2, 16);
+		s.addCell(n5);
+		
+		Formula f = new Formula(4, 3, "E1+E2");
+		s.addCell(f);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	}
+
 
 }
