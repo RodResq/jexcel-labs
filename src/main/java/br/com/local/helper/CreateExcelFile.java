@@ -38,6 +38,9 @@ public class CreateExcelFile {
 			writeDataSheet(s);
 			writeImageSheet(s1);
 			
+			workbook.write();
+			workbook.close();
+			
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -51,6 +54,14 @@ public class CreateExcelFile {
 		
 		WritableImage image = new WritableImage(0, 3, 5, 7, new File("imagem.png"));
 		s.addImage(image);
+		
+		
+		/* Cria um label e escreve hyperlink em uma célula da folha*/
+		Label label2 = new Label(0, 15, "HYPERLINK");
+		s.addCell(label2);
+		
+		Formula formula = new Formula(1, 15,  "DevMedia(\"http://www.devmedia.com.br\", "+"Portal DevMedia\\\")");
+		s.addCell(formula);
 		
 	}
 
@@ -118,10 +129,6 @@ public class CreateExcelFile {
 		
 		Formula f2 = new Formula(6, 2, "F1/2.5");
 		s.addCell(f2);
-	
-	
-	
-	
 	
 	}
 
