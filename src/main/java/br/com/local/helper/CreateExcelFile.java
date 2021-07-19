@@ -15,9 +15,11 @@ import jxl.write.NumberFormat;
 import jxl.write.NumberFormats;
 import jxl.write.WritableCellFormat;
 import jxl.write.WritableFont;
+import jxl.write.WritableImage;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
 
 public class CreateExcelFile {
 
@@ -34,12 +36,22 @@ public class CreateExcelFile {
 			WritableSheet s1 = workbook.createSheet("Folha1", 0);
 			
 			writeDataSheet(s);
+			writeImageSheet(s1);
 			
 			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 
+	}
+
+	private static void writeImageSheet(WritableSheet s) throws RowsExceededException, WriteException {
+		Label label = new Label(0, 0, "Imagem");
+		s.addCell(label);
+		
+		WritableImage image = new WritableImage(0, 3, 5, 7, new File("imagem.png"));
+		s.addImage(image);
+		
 	}
 
 	private static void writeDataSheet(WritableSheet s) throws WriteException {
@@ -97,10 +109,15 @@ public class CreateExcelFile {
 		s.addCell(f);
 	
 	
+		/* Cria um Label e divide o valor de uma célula da folha por 2.5 */
 	
-	
-	
-	
+		Label l5 = new Label(6, 0, "Divide por 2.5", cf);
+		s.addCell(l5);
+		Number n6 = new Number(6, 1, 12);
+		s.addCell(n6);
+		
+		Formula f2 = new Formula(6, 2, "F1/2.5");
+		s.addCell(f2);
 	
 	
 	
